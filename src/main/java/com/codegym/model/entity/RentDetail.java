@@ -1,25 +1,24 @@
-package com.codegym.model;
-import com.codegym.model.Rent;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 
 @Entity
-public class Rent_Detail {
+public class RentDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Rent rent;
     @ManyToOne
-    private CategoryService service;
+    private Category service;
     // chưa cần thiết
     private double time;
 
 
-    public Rent_Detail() {
+    public RentDetail() {
     }
 
-    public Rent_Detail(Rent rent, CategoryService service, double time) {
+    public RentDetail(Rent rent, Category service, double time) {
         this.rent = rent;
         this.service = service;
         this.time = time;
@@ -41,11 +40,11 @@ public class Rent_Detail {
         this.rent = rent;
     }
 
-    public CategoryService getService() {
+    public Category getService() {
         return service;
     }
 
-    public void setService(CategoryService service) {
+    public void setService(Category service) {
         this.service = service;
     }
 

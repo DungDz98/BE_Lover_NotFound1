@@ -1,21 +1,24 @@
-package com.codegym.model;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table
-public class Role {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String typeService;
 
-    public Role() {
+
+    public Category() {
     }
 
-    public Role(Long id, String name) {
+    public Category(Long id, String name, String typeService) {
         this.id = id;
         this.name = name;
+        this.typeService = typeService;
     }
 
     public Long getId() {
@@ -32,5 +35,13 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTypeService() {
+        return typeService;
+    }
+
+    public void setTypeService(String typeService) {
+        this.typeService = typeService;
     }
 }

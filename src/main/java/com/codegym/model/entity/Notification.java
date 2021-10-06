@@ -1,37 +1,32 @@
-package com.codegym.model;
-import com.codegym.model.User;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Message {
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    private User sender;
-
-    @ManyToOne
-    private User receiver;
-
     private String content;
     private Date time;
 
-    //Trang thái tin nhắn: 0: chưa xem  1: đã xem
+    @ManyToOne
+    private User user;
     private int status;
 
-    public Message(User sender, User receiver, String content, Date time, int status) {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.content = content;
-        this.time = time;
-        this.status = status;
+
+    public Notification() {
     }
 
-    public Message() {
+    public Notification(String content, Date time, int status, User user) {
+        this.content = content;
+        this.time = time;
+        // Trạng thái thông báo: 0, Chưa được đọc  1, Đã đc đọc
+        this.status = status;
+        this.user = user;
     }
+
 
     public Long getId() {
         return id;
@@ -39,22 +34,6 @@ public class Message {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public User getSender() {
-        return sender;
-    }
-
-    public void setSender(User sender) {
-        this.sender = sender;
-    }
-
-    public User getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
     }
 
     public String getContent() {
@@ -73,6 +52,15 @@ public class Message {
         this.time = time;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
     public int getStatus() {
         return status;
     }
@@ -80,4 +68,5 @@ public class Message {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

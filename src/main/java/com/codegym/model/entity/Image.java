@@ -1,5 +1,4 @@
-package com.codegym.model;
-import com.codegym.model.User;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 

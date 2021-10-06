@@ -1,32 +1,36 @@
-package com.codegym.model;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Notification {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    private User sender;
+
+    @ManyToOne
+    private User receiver;
+
     private String content;
     private Date time;
 
-    @ManyToOne
-    private User user;
+    //Trang thái tin nhắn: 0: chưa xem  1: đã xem
     private int status;
 
-
-    public Notification() {
-    }
-
-    public Notification(String content, Date time, int status, User user) {
+    public Message(User sender, User receiver, String content, Date time, int status) {
+        this.sender = sender;
+        this.receiver = receiver;
         this.content = content;
         this.time = time;
-        // Trạng thái thông báo: 0, Chưa được đọc  1, Đã đc đọc
         this.status = status;
-        this.user = user;
     }
 
+    public Message() {
+    }
 
     public Long getId() {
         return id;
@@ -34,6 +38,22 @@ public class Notification {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 
     public String getContent() {
@@ -52,15 +72,6 @@ public class Notification {
         this.time = time;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
     public int getStatus() {
         return status;
     }
@@ -68,5 +79,4 @@ public class Notification {
     public void setStatus(int status) {
         this.status = status;
     }
-
 }

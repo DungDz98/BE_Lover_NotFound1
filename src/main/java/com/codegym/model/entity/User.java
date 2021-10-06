@@ -1,5 +1,6 @@
-package com.codegym.model;
+package com.codegym.model.entity;
 
+import com.codegym.model.entity.Role;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;

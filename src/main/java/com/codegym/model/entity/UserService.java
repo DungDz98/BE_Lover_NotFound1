@@ -1,22 +1,22 @@
-package com.codegym.model;
+package com.codegym.model.entity;
 
 import javax.persistence.*;
 
 @Entity
-public class User_Service {
+public class UserService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private User user;
     @ManyToOne
-    private CategoryService service;
+    private Category service;
     private double price;
 
-    public User_Service() {
+    public UserService() {
     }
 
-    public User_Service(User user, CategoryService service, double price) {
+    public UserService(User user, Category service, double price) {
         this.user = user;
         this.service = service;
         this.price = price;
@@ -38,11 +38,11 @@ public class User_Service {
         this.user = user;
     }
 
-    public CategoryService getService() {
+    public Category getService() {
         return service;
     }
 
-    public void setService(CategoryService service) {
+    public void setService(Category service) {
         this.service = service;
     }
 

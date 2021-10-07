@@ -8,20 +8,20 @@ import com.codegym.model.entity.Role;
 import com.codegym.model.entity.User;
 import com.codegym.security.jwt.JwtService;
 import com.codegym.security.userprincal.UserPrinciple;
+import com.codegym.service.email.EmailService;
 import com.codegym.service.role.IRoleService;
-import com.codegym.service.userService.IUserService;
+import com.codegym.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.mail.javamail.JavaMailSender;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Optional;
@@ -41,8 +41,8 @@ public class AuthController {
     AuthenticationManager authenticationManager;
     @Autowired
     private JwtService jwtService;
-//    @Autowired
-//     private JavaMailSender javaMailSender;
+    @Autowired
+    EmailService emailService;
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody SignUpForm signUpForm) {
@@ -63,6 +63,13 @@ public class AuthController {
         user.setStatusCCDV(0);
         user.setAvatar("https://st.quantrimang.com/photos/image/072015/22/avatar.jpg");
         userService.save(user);
+        if (user != null) {
+            try {
+                emailService.sendVerificationEmail(user);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        }
 
         return new ResponseEntity<>(new MessageResponse("Register successfully"), HttpStatus.CREATED);
     }

@@ -1,4 +1,4 @@
-package com.codegym.service.userService;
+package com.codegym.service.user;
 
 
 import com.codegym.model.entity.User;

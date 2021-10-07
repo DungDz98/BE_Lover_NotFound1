@@ -3,7 +3,7 @@ package com.codegym.config;
 
 import com.codegym.security.jwt.JwtAuthenticationFilter;
 import com.codegym.security.jwt.RestAuthenticationEntryPoint;
-import com.codegym.service.userService.IUserService;
+import com.codegym.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -17,7 +17,7 @@ public class JwtService {
     private static final String SECRET_KEY = "123456789";
     private static final long EXPIRE_TIME = 86400000000L;
     private static final Logger logger = LoggerFactory.getLogger(JwtService.class.getName());
-
+// Tạo token
     public String generateTokenLogin(Authentication authentication) {
         UserPrinciple userPrincipal = (UserPrinciple) authentication.getPrincipal();
 
@@ -47,7 +47,7 @@ public class JwtService {
 
         return false;
     }
-
+// thông qua token lấy ra username
     public String getUserNameFromJwtToken(String token) {
         String userName = Jwts.parser()
                 .setSigningKey(SECRET_KEY)

@@ -23,7 +23,7 @@ public class Rent {
     private double totalMoney;
     private double time;
 
-    // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.gui bao cao
+    // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo
     private int status;
 
     @ManyToMany

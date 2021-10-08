@@ -1,6 +1,7 @@
 package com.codegym.model.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class RentDetail {
@@ -9,19 +10,19 @@ public class RentDetail {
     private Long id;
     @ManyToOne
     private Rent rent;
-    @ManyToOne
-    private Category service;
-    // chưa cần thiết
-    private double time;
+    @ManyToMany
+    @JoinTable(name = "rent_service", joinColumns = @JoinColumn(name = "rent_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
+    private Set<UserService> services;
+    private String feedback;
 
 
     public RentDetail() {
     }
 
-    public RentDetail(Rent rent, Category service, double time) {
+    public RentDetail(Rent rent, Set<UserService> services, String feedback) {
         this.rent = rent;
-        this.service = service;
-        this.time = time;
+        this.services = services;
+        this.feedback = feedback;
     }
 
     public Long getId() {
@@ -40,19 +41,20 @@ public class RentDetail {
         this.rent = rent;
     }
 
-    public Category getService() {
-        return service;
+    public Set<UserService> getServices() {
+        return services;
     }
 
-    public void setService(Category service) {
-        this.service = service;
+    public void setServices(Set<UserService> services) {
+        this.services = services;
     }
 
-    public double getTime() {
-        return time;
+    public String getFeedback() {
+        return feedback;
     }
 
-    public void setTime(double time) {
-        this.time = time;
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }
+

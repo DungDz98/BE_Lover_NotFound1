@@ -1,6 +1,8 @@
 package com.codegym.controller;
 
 import com.codegym.model.entity.User;
+import com.codegym.model.entity.UserTest;
+import com.codegym.service.test.ISelectTestService;
 import com.codegym.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,11 @@ import org.springframework.web.bind.annotation.*;
 public class SelectRequestController {
     @Autowired
     IUserService userService;
+
+    @Autowired
+    ISelectTestService selectTestService;
+
+
 
     @GetMapping
     public ResponseEntity<Iterable<User>> findAllUserCCDV(){
@@ -55,5 +62,15 @@ public class SelectRequestController {
     @GetMapping("/findTest")
     public ResponseEntity<User> findAll123(@RequestBody User user) {
         return new ResponseEntity(userService.findAllTest(user.getGender(), user.getCity(), user.getName()), HttpStatus.OK);
+    }
+
+    @PostMapping("/name")
+    public ResponseEntity<Iterable<User>> findName(@RequestParam String name){
+        return new ResponseEntity<>(userService.findAllByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<Iterable<UserTest>> findAllTest(){
+        return new ResponseEntity<>(selectTestService.findAllTest(), HttpStatus.OK);
     }
 }

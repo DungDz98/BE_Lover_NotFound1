@@ -10,7 +10,7 @@ public interface IUserRepository extends JpaRepository<User,Long> {
     @Query(value = "select * from user where statusccdv = 1", nativeQuery = true)
     public Iterable<User> findAllByCCDV();
 
-    @Query(value = "select * from user where statusccdv = 1 and gender like :gender and city like :city and name like concat('%',:name,'%')", nativeQuery = true)
+    @Query(value = "select * from user where statusccdv = 1 or gender like :gender or city like :city or name like concat('%',:name,'%')", nativeQuery = true)
     public Iterable<User> findAllTest(@Param("gender") String gender, @Param("city") String city, @Param("name") String name);
 
     @Query(value = "select * from user where statusccdv = 1 and gender like :gender", nativeQuery = true)

@@ -27,6 +27,11 @@ public class MessageService implements IMessageService {
     }
 
     @Override
+    public void remove(Long id) {
+
+    }
+
+    @Override
     public Iterable<Message> findAllBySenderId(Long id) {
         return messageRepository.findAllBySenderId(id);
     }

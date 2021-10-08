@@ -28,6 +28,11 @@ public class RentService implements IRentService {
     }
 
     @Override
+    public void remove(Long id) {
+
+    }
+
+    @Override
     public Iterable<Rent> findByUserId(Long id) {
         return rentRepository.findByUserId(id);
     }

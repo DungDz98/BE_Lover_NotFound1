@@ -25,4 +25,9 @@ public class RentDetailService implements IRentDetailService {
     public RentDetail save(RentDetail rentDetail) {
         return rentDetailRepository.save(rentDetail);
     }
+
+    @Override
+    public void remove(Long id) {
+
+    }
 }

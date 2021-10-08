@@ -37,10 +37,6 @@ public class SelectRequestController {
         return new ResponseEntity<>(userService.findAllByCity(city), HttpStatus.OK);
     }
 
-    @GetMapping("/age/{ageFirst}/{ageSecond}")
-    public ResponseEntity<Iterable<User>> findAllByAge(@PathVariable int ageFirst, @PathVariable int ageSecond){
-        return new ResponseEntity<>(userService.findAllByAge(ageFirst, ageSecond), HttpStatus.OK);
-    }
     @GetMapping("/name/{name}")
     public ResponseEntity<Iterable<User>> findAllByName(@PathVariable String name){
         return new ResponseEntity<>(userService.findAllByName(name), HttpStatus.OK);

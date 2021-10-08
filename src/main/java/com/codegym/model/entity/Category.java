@@ -11,7 +11,6 @@ public class Category {
     private String name;
     private String typeService;
 
-
     public Category() {
     }
 

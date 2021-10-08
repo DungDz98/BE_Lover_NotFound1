@@ -1,13 +1,22 @@
 package com.codegym.service.user;
 
-
+import com.codegym.model.entity.User;
 import com.codegym.model.entity.User;
 import com.codegym.service.IGeneralService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Optional;
 
+
 public interface IUserService extends IGeneralService<User>, UserDetailsService {
+    Iterable<User> findAllUserCCDV();
+    Iterable<User> findAllTest(String gender, String city, String name);
+    Iterable<User> findAllUserCCDVByGender(String gender);
+
+    Iterable<User> findAllByCity(String city);
+    Iterable<User> findAllByName(String name);
+
+
     Optional<User> findByUserName(String username);
 
     Optional<User> findUserByEmail(String email);
@@ -21,8 +30,6 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Optional<User> findCCDVById(Long id);
 
     Iterable<User> find12NewCCDV();
-
-    Iterable<User> findAllByAge(int age1, int age2);
 
     Iterable<User> findAllByNameContaining(String username);
 

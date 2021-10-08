@@ -85,11 +85,6 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Iterable<User> findAllByAge(int age1, int age2) {
-        return iUserRepository.findAllByAge(age1, age2);
-    }
-
-    @Override
     public Iterable<User> findAllByNameContaining(String username) {
         return iUserRepository.findAllByNameContaining(username);
     }
@@ -117,6 +112,33 @@ public class UserService implements IUserService {
     @Override
     public Iterable<User> findAllByStatusSDDV() {
         return iUserRepository.findAllByUserSDDV();
+    }
+
+
+
+    @Override
+    public Iterable<User> findAllUserCCDV() {
+        return iUserRepository.findAllByCCDV();
+    }
+
+    @Override
+    public Iterable<User> findAllUserCCDVByGender(String gender) {
+        return iUserRepository.findAllUserCCDVByGender(gender);
+    }
+
+    @Override
+    public Iterable<User> findAllByCity(String city) {
+        return iUserRepository.findAllByCity(city);
+    }
+
+    @Override
+    public Iterable<User> findAllByName(String name) {
+        return iUserRepository.findAllByName(name);
+    }
+
+    @Override
+    public Iterable<User> findAllTest(String gender, String city, String name) {
+        return iUserRepository.findAllTest(gender, city, name);
     }
 
 

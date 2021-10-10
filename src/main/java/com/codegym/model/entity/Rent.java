@@ -2,6 +2,7 @@ package com.codegym.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,9 +27,9 @@ public class Rent {
     // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo
     private int status;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "rent_service", joinColumns = @JoinColumn(name = "rent_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private Set<Category> services;
+    private List<Category> services;
     private String feedback;
 
 
@@ -45,7 +46,7 @@ public class Rent {
         this.status = status;
     }
 
-    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, double time, int status, Set<Category> services, String feedback) {
+    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, double time, int status, List<Category> services, String feedback) {
         this.user = user;
         this.userRent = userRent;
         this.rentDate = rentDate;
@@ -121,11 +122,11 @@ public class Rent {
         this.status = status;
     }
 
-    public Set<Category> getServices() {
+    public List<Category> getServices() {
         return services;
     }
 
-    public void setServices(Set<Category> services) {
+    public void setServices(List<Category> services) {
         this.services = services;
     }
 

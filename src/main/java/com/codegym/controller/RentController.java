@@ -1,5 +1,6 @@
 package com.codegym.controller;
 
+import com.codegym.model.entity.Category;
 import com.codegym.model.entity.Rent;
 import com.codegym.service.rent.IRentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class RentController {
     @PostMapping
     public ResponseEntity<Rent> saveRent(@RequestBody Rent rent) {
         rent.setStatus(0);
+        System.out.println(rent.getServices());
         return new ResponseEntity<>(rentService.save(rent), HttpStatus.OK);
     }
 
@@ -69,5 +71,6 @@ public class RentController {
         if (rents.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         return new ResponseEntity<>(rents, HttpStatus.OK);
     }
+
 
 }

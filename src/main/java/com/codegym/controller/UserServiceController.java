@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/userservices")
 public class UserServiceController {
-@Autowired
+    @Autowired
     IUser_Service user_service;
     @GetMapping("")
     public ResponseEntity<Iterable<UserSevice>> findAll() {
@@ -29,5 +29,10 @@ public class UserServiceController {
     public ResponseEntity<Iterable<UserSevice>> findByUserId(@PathVariable Long id) {
         Iterable<UserSevice> user_services = user_service.findAllByUserId(id);
         return new ResponseEntity<>(user_services, HttpStatus.OK);
+    }
+    @GetMapping("/findOne/{id}")
+    public ResponseEntity<UserSevice> findOne(@PathVariable Long id) {
+        Optional<UserSevice> user_services = user_service.findById(id);
+        return new ResponseEntity<>(user_services.get(), HttpStatus.OK);
     }
 }

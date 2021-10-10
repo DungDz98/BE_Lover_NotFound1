@@ -1,6 +1,8 @@
 package com.codegym.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -10,6 +12,9 @@ public class Category {
     private Long id;
     private String name;
     private String typeService;
+
+    @ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
+    private List<Rent> rents;
 
     public Category() {
     }

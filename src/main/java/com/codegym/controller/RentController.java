@@ -1,15 +1,19 @@
 package com.codegym.controller;
 
+import com.codegym.dto.request.RentWithoutServices;
 import com.codegym.model.entity.Category;
 import com.codegym.model.entity.Rent;
+import com.codegym.service.category.ICategoryService;
 import com.codegym.service.rent.IRentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/rents")
@@ -17,6 +21,9 @@ import java.util.Optional;
 public class RentController {
     @Autowired
     IRentService rentService;
+
+    @Autowired
+    ICategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<Iterable<Rent>> getAllRent() {
@@ -35,6 +42,19 @@ public class RentController {
     @PostMapping
     public ResponseEntity<Rent> saveRent(@RequestBody Rent rent) {
         rent.setStatus(0);
+        System.out.println(rent.getServices());
+        return new ResponseEntity<>(rentService.save(rent), HttpStatus.OK);
+    }
+    @PostMapping("/subrent")
+    public ResponseEntity<Rent> saveSubRent(@RequestBody RentWithoutServices subrent) {
+        Rent rent = new Rent(subrent.getUser(), subrent.getUserRent(), subrent.getRentDate(), subrent.getStartTime(), subrent.getTotalMoney(), subrent.getTime(), 0);
+        Set<String> arrService = subrent.getServices();
+        System.out.println("      --       " + arrService);
+        Set<Category> categories = new HashSet<>();
+        arrService.forEach(idCategory -> {
+            categories.add(categoryService.findById(Long.parseLong(idCategory)).get());
+        });
+        rent.setServices(categories);
         System.out.println(rent.getServices());
         return new ResponseEntity<>(rentService.save(rent), HttpStatus.OK);
     }

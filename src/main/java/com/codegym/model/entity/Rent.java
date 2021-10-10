@@ -29,7 +29,7 @@ public class Rent {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "rent_service", joinColumns = @JoinColumn(name = "rent_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private List<Category> services;
+    private Set<Category> services;
     private String feedback;
 
 
@@ -46,7 +46,7 @@ public class Rent {
         this.status = status;
     }
 
-    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, double time, int status, List<Category> services, String feedback) {
+    public Rent(User user, User userRent, Date rentDate, Date startTime, double totalMoney, double time, int status, Set<Category> services, String feedback) {
         this.user = user;
         this.userRent = userRent;
         this.rentDate = rentDate;
@@ -122,11 +122,11 @@ public class Rent {
         this.status = status;
     }
 
-    public List<Category> getServices() {
+    public Set<Category> getServices() {
         return services;
     }
 
-    public void setServices(List<Category> services) {
+    public void setServices(Set<Category> services) {
         this.services = services;
     }
 

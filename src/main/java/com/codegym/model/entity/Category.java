@@ -14,7 +14,7 @@ public class Category {
     private String typeService;
 
     @ManyToMany(mappedBy = "services", cascade = CascadeType.ALL)
-    private List<Rent> rents;
+    private Set<Rent> rents;
 
     public Category() {
     }

@@ -50,11 +50,6 @@ public class UserService implements IUserService {
 
 
     @Override
-    public Optional<User> findByUserName(String username) {
-        return userRepository.findUserByUserName(username);
-    }
-
-    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
@@ -114,32 +109,11 @@ public class UserService implements IUserService {
         return userRepository.findAllByUserSDDV();
     }
 
-
-
     @Override
-    public Iterable<User> findAllUserCCDV() {
-        return userRepository.findAllByCCDV();
+    public Optional<User> findByUserName(String username) {
+        return userRepository.findUserByUserName(username);
     }
 
-    @Override
-    public Iterable<User> findAllUserCCDVByGender(String gender) {
-        return userRepository.findAllUserCCDVByGender(gender);
-    }
-
-    @Override
-    public Iterable<User> findAllByCity(String city) {
-        return userRepository.findAllByCity(city);
-    }
-
-    @Override
-    public Iterable<User> findAllByName(String name) {
-        return userRepository.findAllByName(name);
-    }
-
-    @Override
-    public Iterable<User> findAllTest(String gender, String city, String name) {
-        return userRepository.findAllTest(gender, city, name);
-    }
 
 
 }

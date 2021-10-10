@@ -15,4 +15,24 @@ public class SelectTestService implements ISelectTestService{
     public Iterable<UserTest> findAllTest() {
         return selectTestRepo.findAllTest();
     }
+
+    @Override
+    public Iterable<UserTest> findAllUserCCDV() {
+        return selectTestRepo.findAllByCCDV();
+    }
+
+    @Override
+    public Iterable<UserTest> findAllUserCCDVByGender(String gender) {
+        return selectTestRepo.findAllUserCCDVByGender(gender);
+    }
+
+    @Override
+    public Iterable<UserTest> findAllByCity(String city) {
+        return selectTestRepo.findAllByCity(city);
+    }
+
+    @Override
+    public Iterable<UserTest> findAllByName(String name) {
+        return selectTestRepo.findAllByName(name);
+    }
 }

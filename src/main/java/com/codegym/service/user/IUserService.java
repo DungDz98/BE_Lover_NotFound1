@@ -9,15 +9,16 @@ import java.util.Optional;
 
 
 public interface IUserService extends IGeneralService<User>, UserDetailsService {
-    Iterable<User> findAllUserCCDV();
-    Iterable<User> findAllTest(String gender, String city, String name);
-    Iterable<User> findAllUserCCDVByGender(String gender);
-
-    Iterable<User> findAllByCity(String city);
-    Iterable<User> findAllByName(String name);
-
-
+//    Iterable<User> findAllUserCCDV();
+//    Iterable<User> findAllTest(String gender, String city, String name);
+//    Iterable<User> findAllUserCCDVByGender(String gender);
+//
+//    Iterable<User> findAllByCity(String city);
+//    Iterable<User> findAllByName(String name);
+//
+//
     Optional<User> findByUserName(String username);
+
 
     Optional<User> findUserByEmail(String email);
 

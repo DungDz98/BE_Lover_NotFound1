@@ -20,26 +20,25 @@ public class SelectRequestController {
     @Autowired
     ISelectTestService selectTestService;
 
-
 //.
-    @GetMapping
-    public ResponseEntity<Iterable<User>> findAllUserCCDV(){
-        return new ResponseEntity<>(userService.findAllUserCCDV(), HttpStatus.OK);
-    }
+@GetMapping
+public ResponseEntity<Iterable<UserTest>> findAllUserCCDV(){
+    return new ResponseEntity<>(selectTestService.findAllUserCCDV(), HttpStatus.OK);
+}
 
     @GetMapping("/gender/{gender}")
-    public ResponseEntity<Iterable<User>> findAllUserCCDVByGender(@PathVariable String gender){
-        return new ResponseEntity<>(userService.findAllUserCCDVByGender(gender), HttpStatus.OK);
+    public ResponseEntity<Iterable<UserTest>> findAllUserCCDVByGender(@PathVariable String gender){
+        return new ResponseEntity<>(selectTestService.findAllUserCCDVByGender(gender), HttpStatus.OK);
     }
 
     @GetMapping("/city/{city}")
-    public ResponseEntity<Iterable<User>> findAllByCity(@PathVariable String city){
-        return new ResponseEntity<>(userService.findAllByCity(city), HttpStatus.OK);
+    public ResponseEntity<Iterable<UserTest>> findAllByCity(@PathVariable String city){
+        return new ResponseEntity<>(selectTestService.findAllByCity(city), HttpStatus.OK);
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Iterable<User>> findAllByName(@PathVariable String name){
-        return new ResponseEntity<>(userService.findAllByName(name), HttpStatus.OK);
+    public ResponseEntity<Iterable<UserTest>> findAllByName(@PathVariable String name){
+        return new ResponseEntity<>(selectTestService.findAllByName(name), HttpStatus.OK);
     }
 
 
@@ -48,25 +47,16 @@ public class SelectRequestController {
 //    @GetMapping("/findTest")
 //    public ResponseEntity<Iterable<User>> findAllTest(@RequestBody String gender, String city, String name,  int ageFirst,  int ageSecond){
 //        return new ResponseEntity<>(userService.findAllTest(gender, city, name, ageFirst, ageSecond), HttpStatus.OK);
-//    }
-
-    @PostMapping
-    public ResponseEntity<User> findAllTest(@RequestBody User user) {
-        return new ResponseEntity(userService.findAllTest(user.getGender(), user.getCity(), user.getName()), HttpStatus.OK);
-    }
-
-    @GetMapping("/findTest")
-    public ResponseEntity<User> findAll123(@RequestBody User user) {
-        return new ResponseEntity(userService.findAllTest(user.getGender(), user.getCity(), user.getName()), HttpStatus.OK);
-    }
+//
 
     @PostMapping("/name")
-    public ResponseEntity<Iterable<User>> findName(@RequestParam String name){
-        return new ResponseEntity<>(userService.findAllByName(name), HttpStatus.OK);
+    public ResponseEntity<Iterable<UserTest>> findName(@RequestParam String name){
+        return new ResponseEntity<>(selectTestService.findAllByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/test")
     public ResponseEntity<Iterable<UserTest>> findAllTest(){
         return new ResponseEntity<>(selectTestService.findAllTest(), HttpStatus.OK);
     }
+
 }

@@ -9,6 +9,7 @@ public class RentDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+
     private Rent rent;
     @ManyToMany
     @JoinTable(name = "rent_service", joinColumns = @JoinColumn(name = "rent_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))

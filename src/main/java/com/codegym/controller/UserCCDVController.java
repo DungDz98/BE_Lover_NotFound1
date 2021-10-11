@@ -15,15 +15,17 @@ import java.util.Optional;
 @RequestMapping("/ccdv")
 @CrossOrigin("*")
 public class UserCCDVController {
-@Autowired
+    @Autowired
     IUser_Service user_service;
-@Autowired
+    @Autowired
     IUserService userService;
+
     @GetMapping("")
     public ResponseEntity<Iterable<User>> findAll() {
         Iterable<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         Optional<User> userOptional = userService.findById(id);
@@ -84,25 +86,27 @@ public class UserCCDVController {
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @PutMapping("/statusccdv/{id}")
     public ResponseEntity<User> changeStatusCCDV(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
         user.get().setId(id);
         if (user.get().getStatusCCDV() == 1) {
             user.get().setStatusCCDV(2);
-        }else {
+        } else {
             user.get().setStatusCCDV(1);
         }
         userService.save(user.get());
         return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
-@GetMapping("/{id}")
-public ResponseEntity<User> findById(@PathVariable Long id) {
-    Optional<User> userOptional = userService.findById(id);
 
-    if (!userOptional.isPresent()) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @GetMapping("/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+        Optional<User> userOptional = userService.findById(id);
+
+        if (!userOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
-    return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
-}
 }

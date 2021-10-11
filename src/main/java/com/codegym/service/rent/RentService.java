@@ -33,6 +33,11 @@ public class RentService implements IRentService {
     }
 
     @Override
+    public void deleteById(Long id) {
+        rentRepository.deleteById(id);
+    }
+
+    @Override
     public Iterable<Rent> findByUserId(Long id) {
         return rentRepository.findByUserId(id);
     }

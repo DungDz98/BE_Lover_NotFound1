@@ -92,5 +92,13 @@ public class RentController {
         return new ResponseEntity<>(rents, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Rent> deleteRentById(@PathVariable Long id) {
+        Optional<Rent> rentOptional = rentService.findById(id);
+        if (!rentOptional.isPresent()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        rentService.deleteById(id);
+        return new ResponseEntity<>(rentOptional.get(), HttpStatus.OK);
+    }
+
 
 }

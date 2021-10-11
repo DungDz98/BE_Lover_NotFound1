@@ -10,15 +10,16 @@ public class UserService {
     @ManyToOne
     private User user;
     @ManyToOne
-    private Category service;
+    private Category category;
     private double price;
 
     public UserService() {
     }
 
-    public UserService(User user, Category service, double price) {
+    public UserService(Long id, User user, Category category, double price) {
+        this.id = id;
         this.user = user;
-        this.service = service;
+        this.category = category;
         this.price = price;
     }
 
@@ -38,12 +39,12 @@ public class UserService {
         this.user = user;
     }
 
-    public Category getService() {
-        return service;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setService(Category service) {
-        this.service = service;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public double getPrice() {

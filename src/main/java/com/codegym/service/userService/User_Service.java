@@ -1,28 +1,28 @@
 package com.codegym.service.userService;
 
-import com.codegym.model.entity.UserSevice;
+import com.codegym.model.entity.UserService;
 import com.codegym.repository.IUserServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 @Service
-public class User_Service extends UserSevice implements IUser_Service {
+public class User_Service extends UserService implements IUser_Service {
     @Autowired
     IUserServiceRepository iUserServiceRepository;
 
     @Override
-    public Iterable<UserSevice> findAll() {
+    public Iterable<UserService> findAll() {
         return iUserServiceRepository.findAll();
     }
 
     @Override
-    public Optional<UserSevice> findById(Long id) {
+    public Optional<UserService> findById(Long id) {
         return iUserServiceRepository.findById(id);
     }
 
     @Override
-    public UserSevice save(UserSevice userSevice) {
+    public UserService save(UserService userSevice) {
         return iUserServiceRepository.save(userSevice);
     }
 
@@ -32,7 +32,7 @@ public class User_Service extends UserSevice implements IUser_Service {
     }
 
     @Override
-    public Iterable<UserSevice> findAllByUserId(Long id) {
+    public Iterable<UserService> findAllByUserId(Long id) {
         return iUserServiceRepository.findAllByUserId(id);
     }
 }

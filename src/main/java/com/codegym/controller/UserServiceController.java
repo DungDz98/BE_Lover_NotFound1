@@ -1,6 +1,6 @@
 package com.codegym.controller;
 
-import com.codegym.model.entity.UserSevice;
+import com.codegym.model.entity.UserService;
 import com.codegym.service.category.ICategoryService;
 import com.codegym.service.userService.IUser_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +19,24 @@ public class UserServiceController {
     @Autowired
     ICategoryService categoryService;
     @GetMapping("")
-    public ResponseEntity<Iterable<UserSevice>> findAll() {
+    public ResponseEntity<Iterable<UserService>> findAll() {
         return new ResponseEntity<>(user_service.findAll(), HttpStatus.OK);
     }
     @PostMapping("")
-    public ResponseEntity<Optional<UserSevice>> create(@RequestBody UserSevice userservice) {
+    public ResponseEntity<Optional<UserService>> create(@RequestBody UserService userservice) {
         if (userservice.getCategory().getTypeService().equals("basic")) userservice.setPrice(0);
         else userservice.setPrice(70);
         user_service.save(userservice);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Iterable<UserSevice>> findByUserId(@PathVariable Long id) {
-        Iterable<UserSevice> user_services = user_service.findAllByUserId(id);
+    public ResponseEntity<Iterable<UserService>> findByUserId(@PathVariable Long id) {
+        Iterable<UserService> user_services = user_service.findAllByUserId(id);
         return new ResponseEntity<>(user_services, HttpStatus.OK);
     }
     @GetMapping("/findOne/{id}")
-    public ResponseEntity<UserSevice> findOne(@PathVariable Long id) {
-        Optional<UserSevice> user_services = user_service.findById(id);
+    public ResponseEntity<UserService> findOne(@PathVariable Long id) {
+        Optional<UserService> user_services = user_service.findById(id);
         return new ResponseEntity<>(user_services.get(), HttpStatus.OK);
     }
 }

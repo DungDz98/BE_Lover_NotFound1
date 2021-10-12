@@ -19,7 +19,7 @@ public class UserCCDVController {
     IUser_Service user_service;
 @Autowired
     IUserService userService;
-    @GetMapping("")
+    @GetMapping("") 
     public ResponseEntity<Iterable<User>> findAll() {
         Iterable<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
@@ -37,7 +37,7 @@ public class UserCCDVController {
 //            if (userOptional.get().getName() != "") {
 //                user.setName(userOptional.get().getName());
 //            } else {
-//                userOptional.get().setName(user.getName());
+//                userOptional.get().setName(user.getName());   
 //            }
 //        }
         if (user.getName() == null) {
@@ -105,4 +105,5 @@ public ResponseEntity<User> findById(@PathVariable Long id) {
     }
     return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
 }
+
 }

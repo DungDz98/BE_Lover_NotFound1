@@ -20,7 +20,7 @@ public class CategoryController {
         Iterable<Category> categoryServices = categoryService.findAll();
         return new ResponseEntity<>(categoryServices, HttpStatus.OK);
     }
-
+    
     @GetMapping("/{id}")
     public ResponseEntity<Category> findById(@PathVariable Long id) {
         Optional<Category> categoryOptional = categoryService.findById(id);

@@ -23,8 +23,9 @@ public class EmailService {
         String subject = "Register notification";
         String senderName = "admin";
         String mailContent = "<p>Dear " + user.getUserName() + ",</p>";
-        mailContent += "<p> Bạn đã đăng ký thành công </p>";
-
+//        mailContent += "<p> Bạn đã đăng ký thành công </p>";
+        mailContent += "<p> Bạn đã đăng ký thành công truy cập link để tiếp tục sử dụng dịch vụ: ";
+        mailContent += "<a href ='http://localhost:4200/login'> Click here </a> </p>" ;
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 

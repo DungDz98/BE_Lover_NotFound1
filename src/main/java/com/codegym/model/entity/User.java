@@ -37,10 +37,10 @@ public class User {
     private Date createAt;
     private Date createAtCCDV;
 
-    //0: chưa đang kí CCDV, 1: đã đc duyệt CCDV; 2: Busy không CCDV, 3: đã gửi yêu cầu CCDV chờ admin xác nhận
+    //0: chưa đang kí CCDV, 1: đã đc duyệt CCDV; 2: Busy không CCDV, 3: setVip
     private int statusCCDV;
 
-    //0: Đăng kí thành công, 1: Bị admin block
+    //0: register, 1: active, 2: block
     private int statusUs;
 
     private double price;

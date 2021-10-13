@@ -80,6 +80,12 @@ public class AuthController {
         String jwt = jwtService.generateTokenLogin(authentication);
         UserPrinciple userPrinciple = (UserPrinciple) authentication.getPrincipal();
         User currentUser = userService.findByUserName(signInForm.getUserName()).get();
+        if(currentUser.getStatusUs()==2){
+            return new ResponseEntity<>(new User(2), HttpStatus.OK);
+        } else if(currentUser.getStatusUs()==0){
+            return new ResponseEntity<>(new User(0), HttpStatus.OK);
+        }
         return ResponseEntity.ok(new JwtResponse(currentUser.getId(), jwt, userPrinciple.getUsername(), currentUser.getName(), userPrinciple.getAuthorities(), currentUser.getStatusUs()));
     }
+
 }

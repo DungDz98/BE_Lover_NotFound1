@@ -82,6 +82,10 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public User(int statusUs) {
+        this.statusUs = statusUs;
+    }
+
     public Date getCreateAtCCDV() {
         return createAtCCDV;
     }

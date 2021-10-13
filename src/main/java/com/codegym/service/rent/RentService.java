@@ -36,7 +36,6 @@ public class RentService implements IRentService {
     public void deleteById(Long id) {
         rentRepository.deleteById(id);
     }
-
     @Override
     public Iterable<Rent> findByUserId(Long id) {
         return rentRepository.findByUserId(id);
@@ -45,5 +44,9 @@ public class RentService implements IRentService {
     @Override
     public Iterable<Rent> findByUserRentId(Long id) {
         return rentRepository.findByUserRentId(id);
+    }
+    @Override
+    public Iterable<Rent> findRentByStatus() {
+        return rentRepository.findRentByStatus();
     }
 }

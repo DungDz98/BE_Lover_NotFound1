@@ -1,5 +1,6 @@
 package com.codegym.service.rentdetail;
 
+import com.codegym.model.entity.Rent;
 import com.codegym.model.entity.RentDetail;
 import com.codegym.repository.IRentDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class RentDetailService implements IRentDetailService {
 
     @Override
     public void remove(Long id) {
+    }
 
+    @Override
+    public Iterable<RentDetail> findByRentId(Long id) {
+        return rentDetailRepository.findByRentId(id);
     }
 }

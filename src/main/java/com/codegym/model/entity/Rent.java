@@ -23,15 +23,12 @@ public class Rent {
     private Date startTime;
     private double totalMoney;
     private double time;
-
     // Trạng thái của đơn thuê: 0: chờ CCDV phản hồi, 1: Đã nhận, 2:Đã hoàn thành 3.Đã nhận tiền 4. Đã gửi báo cáo
     private int status;
-
     @ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "rent_service", joinColumns = @JoinColumn(name = "rent_id"), inverseJoinColumns = @JoinColumn(name = "service_id"))
     private Set<Category> services;
     private String feedback;
-
 
     public Rent() {
     }

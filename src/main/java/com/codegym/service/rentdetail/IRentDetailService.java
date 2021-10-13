@@ -4,4 +4,5 @@ import com.codegym.model.entity.RentDetail;
 import com.codegym.service.IGeneralService;
 
 public interface IRentDetailService extends IGeneralService<RentDetail> {
+    Iterable<RentDetail> findByRentId(Long id);
 }

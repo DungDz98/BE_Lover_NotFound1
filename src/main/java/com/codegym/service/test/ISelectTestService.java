@@ -13,4 +13,5 @@ public interface ISelectTestService {
     Iterable<UserTest> findAllByCity(String city);
     Iterable<UserTest> findAllByName(String name);
 
+    Iterable<UserTest> findAllByGoiY(String gender);
 }

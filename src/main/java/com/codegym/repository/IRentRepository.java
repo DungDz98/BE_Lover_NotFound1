@@ -13,4 +13,7 @@ public interface IRentRepository extends JpaRepository<Rent, Long> {
 
     @Query("select r from Rent r where r.userRent.id =:id")
     Iterable<Rent> findByUserRentId(Long id);
+
+    @Query(value= "select * from Rent where status >=2",nativeQuery = true)
+    Iterable<Rent> findRentByStatus();
 }

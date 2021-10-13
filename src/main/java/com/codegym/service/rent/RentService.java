@@ -46,4 +46,9 @@ public class RentService implements IRentService {
     public Iterable<Rent> findByUserRentId(Long id) {
         return rentRepository.findByUserRentId(id);
     }
+
+    @Override
+    public Iterable<Rent> findRentByStatus() {
+        return rentRepository.findRentByStatus();
+    }
 }

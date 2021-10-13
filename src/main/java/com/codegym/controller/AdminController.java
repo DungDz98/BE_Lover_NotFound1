@@ -1,6 +1,8 @@
 package com.codegym.controller;
 
+import com.codegym.model.entity.Rent;
 import com.codegym.model.entity.User;
+import com.codegym.service.rent.IRentService;
 import com.codegym.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     IUserService userService;
+    @Autowired
+    IRentService rentService;
 
     @GetMapping("/users")
     public ResponseEntity<Iterable<User>> getAllUser() {
@@ -39,6 +43,12 @@ public class AdminController {
         else user.get().setStatusCCDV(3);
         userService.save(user.get());
         return new ResponseEntity<>(user.get(),HttpStatus.OK);
+    }
+
+    @GetMapping("/transaction")
+    public ResponseEntity<Iterable<Rent>> findRentByStatus(){
+        Iterable<Rent> rents = rentService.findRentByStatus();
+        return new ResponseEntity<>(rents, HttpStatus.OK);
     }
 
 }

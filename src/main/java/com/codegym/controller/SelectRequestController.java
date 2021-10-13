@@ -1,6 +1,6 @@
 package com.codegym.controller;
 
-import com.codegym.model.entity.User;
+
 import com.codegym.model.entity.UserTest;
 import com.codegym.service.test.ISelectTestService;
 import com.codegym.service.user.IUserService;
@@ -59,4 +59,13 @@ public ResponseEntity<Iterable<UserTest>> findAllUserCCDV(){
         return new ResponseEntity<>(selectTestService.findAllTest(), HttpStatus.OK);
     }
 
+    @GetMapping("/suggestions")
+    public ResponseEntity<Iterable<UserTest>> findAllGoiY(@RequestParam String gender){
+    if (gender.equals("Nu")){
+        return new ResponseEntity<>(selectTestService.findAllByGoiY("Nam"), HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(selectTestService.findAllByGoiY("Nu"), HttpStatus.OK);
+    }
+
+    }
 }

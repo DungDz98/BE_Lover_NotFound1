@@ -35,4 +35,9 @@ public class SelectTestService implements ISelectTestService{
     public Iterable<UserTest> findAllByName(String name) {
         return selectTestRepo.findAllByName(name);
     }
+
+    @Override
+    public Iterable<UserTest> findAllByGoiY(String gender) {
+        return selectTestRepo.findAllByGoiY(gender);
+    }
 }

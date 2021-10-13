@@ -29,8 +29,23 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user){
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
         return new ResponseEntity<>(userSecondService.save(user), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/editAvatar")
+    public ResponseEntity<?> editAvatar(@RequestBody User user, @PathVariable Long id) {
+        try {
+            Optional<User> userOptional = userService.findById(id);
+            if (!userOptional.isPresent()) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+            User user1 = userOptional.get();
+            user1.setAvatar(user.getAvatar());
+            return new ResponseEntity<>(userService.save(user1), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

@@ -28,4 +28,8 @@ public interface ITestSelectRepo extends JpaRepository<UserTest, Long> {
     //    danh sách gợi ý
     @Query(value = "select user.id, user.name, user.avatar, user.description, SUBSTRING_INDEX(GROUP_CONCAT((category.name)ORDER BY RAND() SEPARATOR ' - '), ' - ', 3) AS category_name , user.price from category  inner join user_service on user_service.category_id = category.id  inner join user on user.id = user_service.user_id where (user.statusccdv = 1 or user.statusccdv = 3) and user.gender like :gender GROUP BY ID order by rand() limit 12;", nativeQuery = true)
     public Iterable<UserTest> findAllByGoiY (@Param("gender") String gender);
+
+    //. danh sách user vip mới -> cũ
+    @Query(value = "select user.id, user.name, user.avatar, user.description, SUBSTRING_INDEX(GROUP_CONCAT((category.name)ORDER BY RAND() SEPARATOR ' - '), ' - ', 3) AS category_name , user.price from category  inner join user_service on user_service.category_id = category.id  inner join user on user.id = user_service.user_id where user.statusccdv = 3 GROUP BY ID order by user.id desc limit 6;", nativeQuery = true)
+    public Iterable<UserTest> findAllUserVip();
 }

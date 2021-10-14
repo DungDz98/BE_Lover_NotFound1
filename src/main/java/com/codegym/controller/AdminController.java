@@ -39,7 +39,7 @@ public class AdminController {
     @PutMapping("/users/vip/{id}")
     public ResponseEntity<User> setVipById(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
-        if (user.get().getStatusCCDV() == 3) user.get().setStatusCCDV(2);
+        if (user.get().getStatusCCDV() == 3) user.get().setStatusCCDV(1);
         else user.get().setStatusCCDV(3);
         userService.save(user.get());
         return new ResponseEntity<>(user.get(),HttpStatus.OK);

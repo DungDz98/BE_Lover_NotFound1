@@ -23,11 +23,10 @@ public class UserServiceController {
         return new ResponseEntity<>(user_service.findAll(), HttpStatus.OK);
     }
     @PostMapping("")
-    public ResponseEntity<Optional<UserService>> create(@RequestBody UserService userservice) {
+    public ResponseEntity<UserService> create(@RequestBody UserService userservice) {
         if (userservice.getCategory().getTypeService().equals("basic")) userservice.setPrice(0);
         else userservice.setPrice(70);
-        user_service.save(userservice);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(user_service.save(userservice), HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Iterable<UserService>> findByUserId(@PathVariable Long id) {

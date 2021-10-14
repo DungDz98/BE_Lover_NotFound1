@@ -1,12 +1,25 @@
 package com.codegym.socket;
 
-public User() {
-        }
+public class User {
+    private String name;
+    private String message;
 
-public void setName(String name) {
+    public User() {
+    }
+
+    public void setName(String name) {
         this.name = name;
-        }
+    }
 
-public String getName() {
+    public String getName() {
         return this.name;
-        }
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}

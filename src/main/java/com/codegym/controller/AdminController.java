@@ -51,4 +51,10 @@ public class AdminController {
         return new ResponseEntity<>(rents, HttpStatus.OK);
     }
 
+    @GetMapping("/transaction/{id}")
+    public ResponseEntity<Iterable<Rent>> findRentByStatusAndId(@PathVariable Long id){
+        Iterable<Rent> rents = rentService.findRentByStatusAndId(id);
+        return new ResponseEntity<>(rents, HttpStatus.OK);
+    }
+
 }

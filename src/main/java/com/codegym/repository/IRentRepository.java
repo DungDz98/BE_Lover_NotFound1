@@ -16,4 +16,9 @@ public interface IRentRepository extends JpaRepository<Rent, Long> {
 
     @Query(value= "select * from Rent where status >=2",nativeQuery = true)
     Iterable<Rent> findRentByStatus();
+
+    @Query(value= "select * from Rent where status >=2 and user_ccdv = :id",nativeQuery = true)
+    Iterable<Rent> findRentByStatusAndId(Long id);
+
+
 }

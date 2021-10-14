@@ -10,4 +10,5 @@ public interface IRentService extends IGeneralService<Rent> {
     Iterable<Rent> findByUserRentId(Long id);
     void deleteById(Long id);
     Iterable<Rent> findRentByStatus();
+    Iterable<Rent> findRentByStatusAndId(Long id);
 }

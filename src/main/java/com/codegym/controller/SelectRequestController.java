@@ -1,6 +1,7 @@
 package com.codegym.controller;
 
 
+import com.codegym.model.entity.SelectTest;
 import com.codegym.model.entity.UserTest;
 import com.codegym.service.test.ISelectTestService;
 import com.codegym.service.user.IUserService;
@@ -70,5 +71,11 @@ public class SelectRequestController {
     @GetMapping("/vipUser")
     public ResponseEntity<Iterable<UserTest>> findAllVipUser(){
         return new ResponseEntity<>(selectTestService.findAllVipUser(), HttpStatus.OK);
+    }
+
+    //select nhieu truong
+    @PostMapping("/getManyFiled")
+    public ResponseEntity<Iterable<UserTest>> findAllByField(@RequestBody SelectTest selectTest){
+        return new ResponseEntity<>(selectTestService.findAllByField(selectTest.getGender(), selectTest.getCity1(),selectTest.getName()), HttpStatus.OK);
     }
 }

@@ -19,6 +19,7 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 //    Iterable<User> findAllByName(String name);
 //
 //
+    Iterable<User> findAllUser();
     Optional<User> findByUserName(String username);
 
 

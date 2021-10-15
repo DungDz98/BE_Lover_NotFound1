@@ -23,6 +23,9 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     @Query("select us from User us where us.statusCCDV =1 or us.statusCCDV =2")
     Iterable<User> findAllByStatusCCDV();
 
+    @Query("select us from User us where us.statusUs =0 or us.statusUs =1 or us.statusUs =2")
+    Iterable<User> findAllUser();
+
     @Query("select us from User us where us.statusCCDV =1 and us.id= :id")
     Optional<User> findCCDVById(Long id);
 
@@ -49,5 +52,6 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 
     @Query("select us from User us where us.statusCCDV =0")
     Iterable<User> findAllByUserSDDV();
+
 
 }

@@ -28,6 +28,12 @@ public class UserController {
         return new ResponseEntity<>(userOptional.get(), HttpStatus.OK);
     }
 
+    @GetMapping("")
+    public ResponseEntity<Iterable<User>> getAllUser() {
+        Iterable<User> users = userService.findAllUser();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         return new ResponseEntity<>(userSecondService.save(user), HttpStatus.OK);

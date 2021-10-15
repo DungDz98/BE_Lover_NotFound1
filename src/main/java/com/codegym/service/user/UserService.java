@@ -111,6 +111,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public Iterable<User> findAllUser() {
+        return userRepository.findAllUser();
+    }
+
+    @Override
     public Optional<User> findByUserName(String username) {
         return userRepository.findUserByUserName(username);
     }
